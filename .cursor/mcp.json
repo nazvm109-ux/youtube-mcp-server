@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+      "moy-server": {
+        "command": "C:/Users/Салам алейкум/AppData/Local/Python/pythoncore-3.14-64/python.exe",
+        "args": ["C:/Users/Салам алейкум/Desktop/my-poject/server.py"]
+      }
+    }
+  }
