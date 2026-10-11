@@ -131,21 +131,5 @@ def novye_video(dney: int = 3) -> str:
             stroki.append(f"  • {v['nazvanie']} ({v['data'].astimezone():%d.%m %H:%M}) {v['ssylka']}")
     return "\n".join(stroki)
 
-@mcp.tool()
-def kurs_valyuty(kod: str) -> str:
-    """Показывает курс валюты к польскому злотому и обратно (сколько валюты за 1 злотый) по данным NBP. kod — код валюты, например USD, EUR, UAH"""
-    url = f"https://api.nbp.pl/api/exchangerates/rates/a/{kod.lower()}/?format=json"
-    dannye = json.loads(skachat(url))
-    kurs = dannye["rates"][0]["mid"]
-    data = dannye["rates"][0]["effectiveDate"]
-    obratno = round(1 / kurs, 2)
-    return (
-        f"1 {kod.upper()} = {kurs} злотых\n"
-        f"1 злотый = {obratno} {kod.upper()}\n"
-        f"(курс на {data})"
-    )
-
-
-
 if __name__ == "__main__":
     mcp.run(transport="stdio")
